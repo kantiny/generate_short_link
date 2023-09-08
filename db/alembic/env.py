@@ -13,9 +13,7 @@ sys.path.append(MODEL_PATH)
 
 
 # Явный импорт моделей БД, которые будут использованы для генерации alembic миграций.
-from modelcm.adapter_modelcm.database.models import *
-from modelcm.adapter_modelcm.database import Base
-from modelcm.database.utils import get_db_string_for_adapter
+from generate_short_link.models import *
 
 
 # this is the Alembic Config object, which provides
@@ -29,7 +27,7 @@ except AttributeError:
     pg_url = None
 # Задаем дефолтный URL БД, если явно не передан
 if not pg_url:
-    config.set_main_option('sqlalchemy.url', str(get_db_string_for_adapter()))
+    config.set_main_option('sqlalchemy.url', 'postgresql://postgres:postgres@localhost:5432/generate_short_link_db')
 
 # Interpret the config file for Python logging.
 # This line sets up loggers basically.
